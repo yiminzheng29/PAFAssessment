@@ -39,10 +39,11 @@ public class Queries {
                 """;
 
         public static String SQL_GET_DELIVERY_DETAILS_DISPATCHED = """
-                select count(status) as cnt from orders where name = ? and status = "dispatched";
+                select count(o.status) as cnt from customer c join orders o on c.name = o.name where c.name = ? and o.status = "dispatched";
                         """;
 
         public static String SQL_GET_DELIVERY_DETAILS_PENDING = """
-                select count(status) as cnt from orders where name = ? and status = "pending";
+                select count(o.status) as cnt from customer c join orders o on c.name = o.name where c.name = ? and o.status = "pending";
                  """;
 }
+
